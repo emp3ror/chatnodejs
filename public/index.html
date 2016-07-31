@@ -36,52 +36,8 @@
   </div>
 
   <script src="../socket.io/socket.io.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-  <script>
-    (function() {
-    var url = "httP://localhost:8080/";
-    // url="http://run.plnkr.co/plunks/v8xyYN64V4nqCshgjKms/data-1.json?callback=?"
-
-    $('form#username').on('submit',function () {
-    
-    username = $("#username1").val();
-    // debugger;
-    $.post( "/api/user", function( data ) {
-    //$( ".result" ).html( data );
-    console.log(data);
-    $('.userform').hide();
-    $('.chat').show();
-
-    startSocket(data);
-    });
-    return false;
-    })
-
-    function startSocket(json) {
-    var url = "http://localhost:8080/";
-    var socket= io();
-    console.log(name + " name");
-    $('form').submit(function () {
-    socket.emit('chat message',$("#m").val());
-    $('#m').val('');
-    return false;
-    });
-    socket.on('chat message',function (msg) {
-    console.log(msg+" msg");
-    $('#messages').append($('<li>').text(msg));
-      })
-
-      socket.on('user connected',function(msg) {
-      $('#messages').append($('<li>').text(msg));
-      });
-
-      socket.on('user disconnected',function (msg) {
-      $('#messages').append($('<li>').text(msg+" disconnected"));
-      })
-      }
-
-      })();
-  </script>
+  <script src="js/jquery.min.js"></script>
+  <script src="main.js"></script>
 
 </body>
 

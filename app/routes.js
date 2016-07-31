@@ -1,8 +1,10 @@
 // load the todo model
 // var Todo = require('./models/todo');
+var socketio = require('./socketio.js');
 
 // expose the routes to our app with module.exports
-module.exports = function(app) {
+module.exports = function(app,wagner,socketIo) {
+
 
     // api ---------------------------------------------------------------------
     // get all todos
@@ -15,8 +17,13 @@ module.exports = function(app) {
 
     // create todo and send back all todos after creation
     app.post('/api/user', function(req, res) {
+	console.log(req.body);
+	//name.push(req.body.name);
+        res.json({ message: 'from post' });
+	socketIo.updateUser(req.body.name);
 
-        res.jsonp({ message: 'from post' });
+//	socketio(io,user);
+
 
     });
 
